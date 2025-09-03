@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Building2, TrendingUp, Shield, Zap } from 'lucide-react';
+import { buildApiUrl, API_CONFIG } from '../config/api';
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +21,7 @@ function Login() {
 
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = 'http://localhost:8000/zoho/auth';
+    window.location.href = buildApiUrl(API_CONFIG.ENDPOINTS.ZOHO_AUTH);
   };
 
   const features = [
