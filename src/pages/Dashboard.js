@@ -235,9 +235,11 @@ function Dashboard() {
     try {
       const response = await fetch('/api/zoho/sync/chart-of-accounts', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
         },
       });
       const data = await response.json();
@@ -260,9 +262,11 @@ function Dashboard() {
     try {
       const response = await fetch('/api/zoho/sync/contacts', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
         },
       });
       const data = await response.json();
@@ -299,7 +303,13 @@ function Dashboard() {
 
   const fetchChartOfAccounts = async () => {
     try {
-      const response = await fetch('/api/zoho/chart-of-accounts');
+      const response = await fetch('/api/zoho/chart-of-accounts', {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
       const data = await response.json();
       setChartOfAccounts(data.chartofaccounts || []);
     } catch (error) {
@@ -309,7 +319,13 @@ function Dashboard() {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch('/api/zoho/contacts');
+      const response = await fetch('/api/zoho/contacts', {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
       const data = await response.json();
       setContacts(data.contacts || []);
     } catch (error) {
@@ -329,9 +345,11 @@ function Dashboard() {
     try {
       const response = await fetch('/api/zoho/expenses', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
         },
         body: JSON.stringify(expenseData),
       });

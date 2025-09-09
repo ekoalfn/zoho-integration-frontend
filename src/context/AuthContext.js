@@ -11,7 +11,15 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch('/api/user');
+        const response = await fetch('/api/user', {
+          method: 'GET',
+          credentials: 'include', // Important for session cookies
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
         if (response.ok) {
           const data = await response.json();
           setUser(data);
@@ -19,6 +27,7 @@ export const AuthProvider = ({ children }) => {
           setUser(null);
         }
       } catch (error) {
+        console.error('Auth check failed:', error);
         setUser(null);
       }
       setLoading(false);

@@ -8,6 +8,12 @@ export const API_CONFIG = {
     EXPENSES: '/api/expenses',
     CONTACTS: '/api/contacts',
     ACCOUNTS: '/api/accounts'
+  },
+  // Default headers for API requests
+  DEFAULT_HEADERS: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
   }
 };
 
